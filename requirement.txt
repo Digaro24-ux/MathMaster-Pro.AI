@@ -1,0 +1,20 @@
+---
+
+### 2. `requirements.txt`
+
+*(Note: Since MathMaster'Pro.AI is a pure client-side web application built with vanilla web technologies, it does not require external Python or Node.js packages. This file serves as a formal system dependency and project specification manifest for your repository.)*
+
+```text
+# MathMaster'Pro.AI System Specifications & Environment Requirements
+
+# Runtime Environment
+- Modern Web Browser supporting ES6+ JavaScript and HTML5/CSS3 
+  (e.g., Google Chrome, Mozilla Firefox, Microsoft Edge, Apple Safari)
+
+# Backend / Server Dependencies
+- None (Client-side architecture utilizing browser localStorage)
+
+# Development Tools (Optional)
+- Git (for version control)
+- VS Code / Any text editor (for code modifications)
+---

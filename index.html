@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathMaster'Pro.AI — 100-Level Interactive Math Tutor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1><strong>MathMaster'Pro.AI</strong></h1>
+        <p>100-Level Adaptive Math Trainer & Skill Tracker</p>
+    </header>
+
+    <!-- AUTHENTICATION SCREEN -->
+    <div id="authView" class="card">
+        <h2>Student Registration & Login</h2>
+        <p style="color: var(--ink-soft); font-size: 0.9rem;">You must register or log in with your username and PIN to access the training modules.</p>
+        <div id="authError" class="feedback error"></div>
+        <label>Username</label>
+        <input type="text" id="usernameInput" placeholder="e.g. scholar123" autocomplete="off">
+        <label>PIN Code (Session Security)</label>
+        <input type="password" id="pinInput" placeholder="4-digit PIN" maxlength="6">
+        <button class="btn btn-primary" id="authBtn">Log In / Register & Enter</button>
+    </div>
+
+    <!-- MAIN APP DASHBOARD -->
+    <div id="dashboardView" class="card hidden">
+        <div class="session-bar">
+            <span id="sessionUser">User: --</span>
+            <span id="sessionLoginTime">In: --</span>
+            <span id="sessionLogoutRecord">Out: Active</span>
+            <button class="btn" style="background:var(--rust); color:#fff; padding:4px 10px; font-size:0.75rem;" id="logoutBtn">Log Out</button>
+        </div>
+
+        <h2>Select Math Operation</h2>
+        <p style="color:var(--ink-soft); font-size:0.9rem;">Choose a category to master through 100 progressive levels.</p>
+        
+        <div class="grid-4">
+            <div class="op-card" onclick="app.selectCategory('add')">
+                <h3>Addition (+)</h3>
+                <p>Unlocked: <span id="prog-add">1</span>/100</p>
+            </div>
+            <div class="op-card" onclick="app.selectCategory('sub')">
+                <h3>Subtraction (-)</h3>
+                <p>Unlocked: <span id="prog-sub">1</span>/100</p>
+            </div>
+            <div class="op-card" onclick="app.selectCategory('mul')">
+                <h3>Multiplication (×)</h3>
+                <p>Unlocked: <span id="prog-mul">1</span>/100</p>
+            </div>
+            <div class="op-card" onclick="app.selectCategory('div')">
+                <h3>Division (÷)</h3>
+                <p>Unlocked: <span id="prog-div">1</span>/100</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 25px; border-top: 1px solid var(--line); padding-top: 15px;">
+            <h3 style="font-size: 1rem; color: var(--teal-deep); margin-bottom: 8px;">Recent Session Activity Log</h3>
+            <div id="sessionHistoryBox" style="font-size: 0.82rem; color: var(--ink-soft); max-height: 100px; overflow-y: auto; background: #fff; padding: 8px; border-radius: var(--radius); border: 1px solid var(--line);">
+                No previous sessions recorded.
+            </div>
+        </div>
+    </div>
+
+    <!-- LEVEL SELECT & LESSON VIEW -->
+    <div id="levelView" class="card hidden">
+        <button class="btn btn-ghost" onclick="app.showDashboard()" style="margin-bottom: 15px;">← Back to Categories</button>
+        <h2 id="levelCategoryTitle">Category Levels</h2>
+        
+        <div class="lesson-box" id="lessonContent">
+            <strong>Micro-Lesson & Guide:</strong> <span id="lessonText">Loading...</span>
+        </div>
+
+        <label>Select Level (1 to 100):</label>
+        <div class="level-grid" id="levelGridContainer"></div>
+    </div>
+
+    <!-- QUIZ ARENA -->
+    <div id="quizView" class="card hidden">
+        <div class="quiz-header">
+            <button class="btn btn-ghost" onclick="app.showLevels()">← Exit Level</button>
+            <span id="quizLevelIndicator" style="font-weight: 600;">Level 1</span>
+            <span>Score: <strong id="quizScore">0</strong></span>
+        </div>
+
+        <!-- Dynamic In-Card Celebration Container -->
+        <div id="celebrationContainer"></div>
+
+        <div class="problem-display" id="problemDisplay">5 + 3 = ?</div>
+
+        <div id="inputSection" style="display:flex; gap:10px;">
+            <input type="number" id="answerInput" placeholder="Type answer..." autocomplete="off">
+            <button class="btn btn-secondary" id="submitAnswerBtn" style="height: 48px;">Submit</button>
+        </div>
+        
+        <div class="feedback" id="quizFeedback"></div>
+        
+        <!-- Study Working Box (Appears after 2 failed attempts) -->
+        <div id="workingContainer" class="working-box hidden"></div>
+
+        <p style="text-align:center; font-size:0.85rem; color:var(--ink-soft); margin-top:15px;" id="targetStreakInfo">Correct answers to clear level: 0 / 5</p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
